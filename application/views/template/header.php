@@ -27,6 +27,7 @@
                         <span class="icon-bar"></span>
                     </a>
                     <a class="brand" href="#">Project name</a>
+                    <a class="btn btn-danger pull-right" href="<?php echo base_url();?>login">login</a>
                     <div class="nav-collapse">
                         <ul class="nav">
                             <li><a href="#">Home</a></li>

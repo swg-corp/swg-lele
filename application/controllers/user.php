@@ -22,8 +22,8 @@ class User extends CI_Controller {
     }
 
     function index() {
-        $users=$this->doctrine->em->getRepository('models\User')->findAll();
-        $this->load->view('user', array('user' => $users)); 
+        //$users=$this->doctrine->em->getRepository('models\User')->findAll();
+        $this->load->view('user'); 
        /**
         * $user = new models\User();
         $user->setUsername('juned');
@@ -35,10 +35,6 @@ class User extends CI_Controller {
         */
     }
     
-    function add(){
-        $user=new models\User();
-        $this->doctrine->em->persist($user);
-        $this->doctrine->em->flush();
-    }
+   
 
 }

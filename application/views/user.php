@@ -70,11 +70,7 @@
 	<h1>Welcome to CodeIgniter!</h1>
 
 	<div id="body">
-		<?php
-                  foreach ($user as $u){
-                      echo $u->getUsername().' '.$u->getEmail().'<br/>';
-                  }
-                ?>
+		
 	</div>
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
