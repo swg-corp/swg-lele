@@ -1,4 +1,5 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-$config['template_base']='templates/';
-$config['asset_base']='assets/';
+$config['template_base']='template/';
+$config['asset_base']='asset/';
+?>

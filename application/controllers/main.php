@@ -15,7 +15,14 @@ class Main extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->template->set_template('basic');
-        $this->template->set_css(array('bootstrap','bootstrap-responsive'));
+        $this->data->message='message';
+    }
+    
+    public function index(){
+       $this->template->set_title('Test Title')
+               ->set_css('bootstrap')
+               ->render('main',$this->data);
+       
     }
 }
 
