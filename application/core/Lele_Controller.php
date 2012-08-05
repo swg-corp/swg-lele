@@ -6,13 +6,17 @@
  */
 
 /**
- * Description of MY_Controller
+ * Description of Lele_Controller
  *
  * @author satriaprayoga
  */
 class Lele_Controller extends CI_Controller{
-    
+   
     function __construct() {
         parent::__construct();
+    }
+    
+    protected function _view($view='',$data=array()){
+        $this->load->view($view,$data);
     }
 }

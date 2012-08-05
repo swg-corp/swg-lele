@@ -1,8 +1,25 @@
 <div class="row">
 	<div class="span6">
-	  <h2>Heading</h2>
-	  <p>Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-	  <p><a class="btn" href="#">View details &raquo;</a></p>
+	 <form id="login-form" class="form-horizontal well" action="#" method="post">
+                <fieldset>
+                    <div class="control-group">
+                        <label class="control-label" for="username">username</label>
+                        <div class="controls">
+                            <input type="text" class="input-large" placeholder="Username" name="username" id="username"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="password">password</label>
+                        <div class="controls">
+                            <input type="password" class="input-large" placeholder="Password" name="password" id="password"/><br />
+                        </div>
+                    </div>
+
+
+                </fieldset>
+                <button type="submit" class="btn btn-warning pull-right">Login</button>
+
+            </form>
 
 	</div>
 	<div class="span5">

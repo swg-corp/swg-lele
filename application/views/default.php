@@ -7,6 +7,8 @@
 	<meta name="author" content="">
 	<?php echo $this->bootstrap->meta; ?>
 	<?php echo $this->bootstrap->stylesheet; ?>
+        <link href="<?php echo base_url('assets/css/font-awesome.css'); ?>" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
 </head>
 <body>
 

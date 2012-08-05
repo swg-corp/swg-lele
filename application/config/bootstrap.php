@@ -3,4 +3,4 @@
 
 $config['parser']    = FALSE;
 $config['template']  = 'default';
-$config['cache_ttl'] = 100;
+$config['cache_ttl'] = 0;
