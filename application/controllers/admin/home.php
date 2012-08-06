@@ -6,18 +6,17 @@
  */
 
 /**
- * Description of admin
+ * Description of home
  *
  * @author satriaprayoga
  */
-class Admin extends Lele_Controller{
-   
-    function __construct() {
+class Home extends Lele_Controller{
+    
+    public function __construct() {
         parent::__construct();
     }
     
     public function index(){
-        $this->_view('dashboard/login');
+       $this->_view('admin/home');
     }
 }
-
