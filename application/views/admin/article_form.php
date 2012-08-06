@@ -1,8 +1,11 @@
 <div id="content">
     <div class="container">
         <div class="row">
+             <div class="span3">
+                <?php echo $this->bootstrap->widget("sidebar_widget",array())?>;
+            </div>
 
-            <div class="span12">
+            <div class="span9 pull-left">
 
                 <div class="widget">
                     <div class="widget-header">
@@ -12,7 +15,7 @@
                     <div class="widget-content">
                       
                         <?php echo validation_errors();?>
-                        <?php echo form_open('admin/article/add', array('class' => 'form-horizontal well clearfix')); ?>
+                        <?php echo form_open('admin/article/add', array('class' => 'clearfix well')); ?>
                         <fieldset>
                            
                             <div class="control-group">
@@ -25,19 +28,17 @@
                             <div class="control-group">
                                 <label class="control-label" for="txt">Content</label>
                                 <div class="controls">
-                                    <textarea id="txt" class="input-xlarge" rows="5" name="content">&nbsp;</textarea>
+                                    <textarea id="txt" style="width: 640px; height: 300px"  name="content" placeholder="enter content..">&nbsp;</textarea>
                                 </div>
                             </div>
                         </fieldset>
                         <div class="form-actions">
-                            <button type="submit" class="btn btn-primary btn-large"><i class="icon-ok"></i> save</button>
+                            <button type="submit" class="btn btn-primary"><i class="icon-ok"></i> save</button>
+                            <button type="reset" class="btn"><i class="icon-refresh"></i> clear</button>
                            
                         </div>
                         <?php echo form_close(); ?>
-                        <?php if (isset($article)){
-                                 echo '<p>'.$article->getArtikel_name().'</p>';
-                             }
-                        ?>
+                        
                     </div>
                       
                 </div>

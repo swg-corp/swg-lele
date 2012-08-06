@@ -7,17 +7,22 @@
             <div class="span9">
                 <h1 class="page-title">
                     <i class="icon-bookmark icon-large"></i>
-                    Articles</h1>
+                    Articles <a class="btn btn-warning pull-right" href="<?php echo site_url('admin/article/add'); ?>" title="create new article"><i class="icon-file"></i>&nbsp;new</a></h1>
+                    
                 <div class="widget">
                     <div class="widget-header">
                         <i class="icon-bookmark-empty"></i>
                         <h3>Article</h3>
                     </div>
                     <div class="widget-content">
-                        <p><?php echo $message; ?></p>
+                        <p><?php if(isset($message)) echo $message; ?></p>
+                        <?php foreach ($articles as $key => $value):?>
+                         <h1><?php echo $value->getArtikel_name();?></h1><br/>
+                         <p><?php echo $value->getArtikel_content();?></p><hr/>
+                        <?php endforeach;?>
                     </div>
                 </div>
-                <div><a class="btn btn-primary" href="<?php echo site_url('admin/article/add'); ?>"><i class="icon-plus"></i>create article</a></div>
+                
             </div>
         </div>
     </div>

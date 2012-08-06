@@ -35,6 +35,10 @@ class Article extends Lele_Controller{
     }
     
     public function add(){
+        $this->set_css('wysiwyg', base_url('assets/css/bootstrap-wysihtml5.css'));
+        $this->set_js('wysihtml5', base_url('assets/js/wysihtml5-0.3.0.js'));
+        $this->set_js('bootstrap-wysihtml5', base_url('assets/js/bootstrap-wysihtml5.js'));
+        $this->set_js_cust('$'.'("#txt").wysihtml5();');
         $this->data->title='';
         $this->data->content='';
         $this->load->helper('form');
@@ -46,8 +50,10 @@ class Article extends Lele_Controller{
             $article=new models\Artikel();
             $article->setArtikel_name($title);
             $article->setArtikel_content($content);
-            $this->data->article=$article;
-           
+            $article->setArtikel_release(new DateTime('now'));
+            $this->doctrine->em->persist($article);
+            $this->doctrine->em->flush();
+            redirect(site_url('admin/article'));
         }
         $this->_view('admin/article_form',$this->data);
     }

@@ -17,6 +17,6 @@ class Home extends Lele_Controller{
     }
     
     public function index(){
-       $this->_view('admin/home');
+       $this->_view('admin/home',$this->data);
     }
 }

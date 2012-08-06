@@ -1,6 +1,10 @@
-<script src="<?php echo base_url('assets/js/jquery-1.7.2.min.js'); ?>"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
-<script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
-
+<?php foreach ($js as $key => $value):?>
+<script src="<?php echo $value;?>"></script>
+<?php endforeach;?>
+<script>
+   <?php if(isset($script)):?>
+       <?php echo $script;?>
+   <?php endif;?> 
+</script>
 </body>
 </html>
