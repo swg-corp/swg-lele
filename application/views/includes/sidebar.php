@@ -19,6 +19,12 @@
                 Album		
             </a>
         </li>
+         <li <?php if ($this->uri->segment(1) == "article") echo ' class="active"'; ?>>
+            <a href="<?php echo site_url('article'); ?>">
+                <i class="icon-book"></i>
+                Article		
+            </a>
+        </li>
 
         
 

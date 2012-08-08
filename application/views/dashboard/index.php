@@ -4,6 +4,6 @@
 <?php endif; ?>
 <?php $this->load->view('includes/sidebar');?>
 <div class="span9">
-    <h1 class="page-title">Admin Dashboard</h1>
+    <h1 class="page-title">Dashboard</h1>
 </div>
 <?php $this->load->view('includes/footer');?>

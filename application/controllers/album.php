@@ -86,6 +86,7 @@ class Album extends Lele_Controller {
         $data = array();
         $data['album'] = $this->album_model->find_by_id($album_id);
         $data['user_id']=$this->get_logged_id();
+        $data['images']=$this->image_model->find_by_album_id($album_id);
         $this->load->view('album/images', $data);
     }
 

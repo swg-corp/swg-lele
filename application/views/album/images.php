@@ -3,10 +3,14 @@ $assets = array(
     'js' => array('swfobject.js',
         'jquery.uploadify.v2.1.4.min.js',
         'fancybox/jquery.mousewheel-3.0.6.pack.js',
-        'fancybox/jquery.fancybox.pack.js?v=2.0.6'
+        'fancybox/jquery.fancybox.js',
+        'fancybox/jquery.fancybox-buttons.js',
+        'fancybox/jquery.fancybox-thumbs.js'
     ),
     'css' => array('uploadify.css',
-        'fancybox/jquery.fancybox.css'
+        'fancybox/jquery.fancybox.css',
+        'fancybox/jquery.fancybox-buttons.css',
+        'fancybox/jquery.fancybox-thumbs.css'
     )
 );
 ?>
@@ -36,9 +40,101 @@ $assets = array(
             </div>
         </div>
     </div>
+    <div class="widget">
+        <div class="widget-header">
+            <h3><i class="icon-picture"></i>  Images in Album: <?php echo $album->title; ?></h3>
+        </div>
+        <div class="widget-content">
+            <div class="carousel slide span8" id="myCarousel">
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <ul class="thumbnails">
+                            <li class="span2">
+                                <div class="thumbnail">
+                                    <a class="img-fancy" href="https://ssl.gstatic.com/onebox/sports/olympics/london2012_logo.png" title="London Olympic Logo"><img src="https://ssl.gstatic.com/onebox/sports/olympics/london2012_logo.png" alt=""></a>
+                                </div>
+                            </li>
+                            <li class="span2">
+                                <div class="thumbnail">
+                                    <a class="img-fancy" href="https://ssl.gstatic.com/onebox/sports/olympics/london2012_logo.png" title="London Olympic Logo"><img src="https://ssl.gstatic.com/onebox/sports/olympics/london2012_logo.png" alt=""></a>
+                                </div>
+                            </li>
+                            <li class="span2">
+                                <div class="thumbnail">
+                                    <a class="img-fancy" href="https://ssl.gstatic.com/onebox/sports/olympics/london2012_logo.png" title="London Olympic Logo"><img src="https://ssl.gstatic.com/onebox/sports/olympics/london2012_logo.png" alt=""></a>
+                                </div>
+                            </li>
+                            <li class="span2">
+                                <div class="thumbnail">
+                                    <a class="img-fancy" href="https://ssl.gstatic.com/onebox/sports/olympics/london2012_logo.png" title="London Olympic Logo"><img src="https://ssl.gstatic.com/onebox/sports/olympics/london2012_logo.png" alt=""></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="item">
+                        <ul class="thumbnails">
+                            <li class="span2">
+                                <div class="thumbnail">
+                                    <a class="img-fancy" href="https://ssl.gstatic.com/onebox/sports/olympics/london2012_logo.png" title="London Olympic Logo"><img src="https://ssl.gstatic.com/onebox/sports/olympics/london2012_logo.png" alt=""></a>
+                                </div>
+                            </li>
+                           <li class="span2">
+                                <div class="thumbnail">
+                                    <a class="img-fancy" href="https://ssl.gstatic.com/onebox/sports/olympics/london2012_logo.png" title="London Olympic Logo"><img src="https://ssl.gstatic.com/onebox/sports/olympics/london2012_logo.png" alt=""></a>
+                                </div>
+                            </li>
+                            <li class="span2">
+                                <div class="thumbnail">
+                                    <a class="img-fancy" href="https://ssl.gstatic.com/onebox/sports/olympics/london2012_logo.png" title="London Olympic Logo"><img src="https://ssl.gstatic.com/onebox/sports/olympics/london2012_logo.png" alt=""></a>
+                                </div>
+                            </li>
+                            <li class="span2">
+                                <div class="thumbnail">
+                                    <a class="img-fancy" href="https://ssl.gstatic.com/onebox/sports/olympics/london2012_logo.png" title="London Olympic Logo"><img src="https://ssl.gstatic.com/onebox/sports/olympics/london2012_logo.png" alt=""></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="item">
+                        <ul class="thumbnails">
+                            <li class="span2">
+                                <div class="thumbnail">
+                                    <a class="img-fancy" href="https://ssl.gstatic.com/onebox/sports/olympics/london2012_logo.png" title="London Olympic Logo"><img src="https://ssl.gstatic.com/onebox/sports/olympics/london2012_logo.png" alt=""></a>
+                                </div>
+                            </li>
+                            <li class="span2">
+                                <div class="thumbnail">
+                                    <a class="img-fancy" href="https://ssl.gstatic.com/onebox/sports/olympics/london2012_logo.png" title="London Olympic Logo"><img src="https://ssl.gstatic.com/onebox/sports/olympics/london2012_logo.png" alt=""></a>
+                                </div>
+                            </li>
+                            <li class="span2">
+                                <div class="thumbnail">
+                                    <a class="img-fancy" href="https://ssl.gstatic.com/onebox/sports/olympics/london2012_logo.png" title="London Olympic Logo"><img src="https://ssl.gstatic.com/onebox/sports/olympics/london2012_logo.png" alt=""></a>
+                                </div>
+                            </li>
+                            <li class="span2">
+                                <div class="thumbnail">
+                                    <a class="img-fancy" href="https://ssl.gstatic.com/onebox/sports/olympics/london2012_logo.png" title="London Olympic Logo"><img src="https://ssl.gstatic.com/onebox/sports/olympics/london2012_logo.png" alt=""></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <a data-slide="prev" href="#myCarousel" class="left carousel-control">‹</a>
+                <a data-slide="next" href="#myCarousel" class="right carousel-control">›</a>
+            </div>
+        </div>
+    </div>
 </div>
 <script type="text/javascript">
     $(document).ready(function(){
+        $('#myCarousel').carousel('pause');
+        $('a.img-fancy').fancybox({ helpers: {
+              title : {
+                  type : 'float'
+              }
+          }
+});
         $('#upload-btn').hide();
         $('#new-images').hide();
         $('#file_upload').uploadify({
