@@ -395,7 +395,17 @@ input {
 /*------------------------------------------------------------------
 [8. Miscellaneous]
 */
-
+.mini-image-set { list-style-type: none; margin: 0; padding: 0; }
+.mini-image-set li { list-style-type: none; margin: 0 2px; padding: 0; float: left; width: 50px; line-height: 0; border: 1px solid #ccc; }
+.mini-image-set li:nth-child(2) { opacity: 0.9; }
+.mini-image-set li:nth-child(3) { opacity: 0.8; }
+.mini-image-set li:nth-child(4) { opacity: 0.7; }
+.mini-image-set li:nth-child(5) { opacity: 0.6; }
+.mini-image-set li:nth-child(6) { opacity: 0.5; }
+.mini-image-set li:nth-child(7) { opacity: 0.4; }
+.mini-image-set li:nth-child(8) { opacity: 0.3; }
+.mini-image-set li:nth-child(9) { opacity: 0.2; }
+.mini-image-set li:nth-child(10) { opacity: 0.1; }
 .chart-holder {
     position: relative;
 

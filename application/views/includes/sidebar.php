@@ -13,6 +13,12 @@
                 Menteri		
             </a>
         </li>
+        <li <?php if ($this->uri->segment(1) == "album") echo ' class="active"'; ?>>
+            <a href="<?php echo site_url('album'); ?>">
+                <i class="icon-picture"></i>
+                Album		
+            </a>
+        </li>
 
         
 

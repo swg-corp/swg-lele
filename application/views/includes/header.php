@@ -12,10 +12,20 @@
         <link href="<?php echo base_url('assets/css/bootstrap-responsive.min.css'); ?>" rel="stylesheet">
         <link href="<?php echo base_url('assets/css/admin.css'); ?>" rel="stylesheet">
         <link href="<?php echo base_url('assets/css/font-awesome.css'); ?>" rel="stylesheet">
-        <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+        <?php if (isset($css)): ?>
+            <?php foreach ($css as $stylesheet): ?>
+                <link rel="stylesheet" href="<?php echo base_url('assets/css/'.$stylesheet); ?>">
+            <?php endforeach; ?>
+        <?php endif; ?>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <script src="<?php echo base_url('assets/js/jquery-1.7.2.min.js'); ?>"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
         <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
+        <?php if (isset($js)): ?>
+            <?php foreach ($js as $script): ?>
+                <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/<?php echo $script; ?>"></script>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </head>
     <body>
         <div class="navbar navbar-fixed-top">
