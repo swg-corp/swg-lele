@@ -60,7 +60,7 @@
             <?php else : ?>
                 <p>No Album Found</p>
             <?php endif; ?>
-
+ 
             <?php echo $this->pagination->create_links(); ?>
         </div>
     </div>

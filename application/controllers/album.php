@@ -25,11 +25,11 @@ class Album extends Lele_Controller {
     public function index() {
         $uri = $this->uri->segment(3);
         $offset = (!empty($uri) && is_numeric($uri)) ? $uri : 0;
-        $per_page = 10;
+        $per_page = 4;
         $album_data = $this->album_model->paginate($per_page, $offset);
         $total = count($this->album_model->find_all());
         for ($i = 0; $i < count($album_data); $i++) {
-            $album_data[$i]['images'] = $this->image_model->find_last($per_page, $album_data[$i]['id']);
+            $album_data[$i]['images'] = $this->image_model->find_last(5, $album_data[$i]['id']);
         }
         $this->load->library('pagination');
         $data = array();
@@ -57,7 +57,7 @@ class Album extends Lele_Controller {
         $config['num_tag_open'] = '<li>';
         $config['num_tag_close'] = '</li>';
         $config['num_links'] = 4;
-
+        $config['use_page_numbers'] = TRUE;
         $this->pagination->initialize($config);
 
         $this->load->view('album/index', $data);
@@ -83,10 +83,44 @@ class Album extends Lele_Controller {
     }
 
     public function images($album_id) {
+       
+        $uri = $this->uri->segment(4);
+        $offset = (!empty($uri) && is_numeric($uri)) ? $uri : 0;
+        $per_page=8;
+        $images=$this->image_model->find_by_album_id($album_id);
+        $total_images=  count($this->image_model->find_by_album_id($album_id));
         $data = array();
         $data['album'] = $this->album_model->find_by_id($album_id);
         $data['user_id']=$this->get_logged_id();
-        $data['images']=$this->image_model->find_by_album_id($album_id);
+        $data['images']=$images;//$this->image_model->find_by_album_id($album_id);
+        $this->load->library('pagination');
+        $config = array();
+        $config['base_url'] = site_url('album/images/'.$album_id.'/');
+        $config['total_rows'] = $total_images;
+        $config['per_page'] = $per_page;
+        $config['full_tag_open'] = '<div class="pagination"><ul>';
+        $config['full_tag_close'] = '</ul></div>';
+        $config['first_link'] = '&larr; First';
+        $config['last_link'] = 'Last &rarr;';
+        $config['first_tag_open'] = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['prev_link'] = 'Previous';
+        $config['prev_tag_open'] = '<li class="prev">';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = 'Next';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li>';
+        $config['last_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['num_links'] = 4;
+        $config['use_page_numbers'] = TRUE;
+
+        $this->pagination->initialize($config);
+        $data['total']=$total_images;
         $this->load->view('album/images', $data);
     }
 

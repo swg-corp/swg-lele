@@ -2,7 +2,7 @@
 
 <?php $this->load->view('includes/sidebar'); ?>
 <div class="span9">
-    <h1 class="page-title">Menteri</h1>
+    <h1 class="page-title">Menteri <a class="btn btn-warning pull-right" href="<?php echo site_url('menteri/create'); ?>">Create New Menteri</a></h1>
     <div class="widget">
         <div class="widget-header">
             <h3>User Profile</h3>

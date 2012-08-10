@@ -19,28 +19,29 @@ class Menteri extends Lele_Controller {
         } else {
             $this->load->model('menteri_model');
             $this->load->model('user_model');
+           
         }
     }
 
     public function index() {
         $uri = $this->uri->segment(3);
         $offset = (!empty($uri) && is_numeric($uri)) ? $uri : 0;
-        $item = 10;
+        $item = 5;
         $menteri = $this->menteri_model->page($item, $offset);
         $total_menteri = count($this->menteri_model->find_all());
-        
+
         $data = array();
-        $menteries=array();
-        foreach ($menteri as $key=>$m) {
-            $menteries[]=array(
-                'name'=>$m['name'],
-                'email'=>$this->user_model->find_by_id($m['user_id'])->email,
-                'last_login'=>$this->user_model->find_by_id($m['user_id'])->last_logged_in
+        $menteries = array();
+        foreach ($menteri as $key => $m) {
+            $menteries[] = array(
+                'name' => $m['name'],
+                'email' => $this->user_model->find_by_id($m['user_id'])->email,
+                'last_login' => $this->user_model->find_by_id($m['user_id'])->last_logged_in
             );
         }
         $data['menteries'] = $menteries;
         $this->load->library('pagination');
-        
+
         $config = array();
         $config['base_url'] = site_url('menteri/index');
         $config['total_rows'] = $total_menteri;
@@ -65,12 +66,34 @@ class Menteri extends Lele_Controller {
         $config['num_tag_close'] = '</li>';
         $config['num_links'] = 4;
         $config['use_page_numbers'] = TRUE;
-        
+
         $this->pagination->initialize($config);
-        $this->load->view('menteri/index',$data);
+        $this->load->view('menteri/index', $data);
     }
 
-    public function add() {
+    public function create() {
+        $this->load->library('form_validation');
+        $this->form_validation->set_error_delimiters('<div class="alert alert-error"><strong>Error: </strong>', '</div>');
+        $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email|xss_clean');
+        $this->form_validation->set_rules('password', 'password', 'trim|required|xss_clean');
+      
+        if($this->form_validation->run()===FALSE){
+            $this->load->view('menteri/create');
+        }else{
+            $user_data=array(
+               
+                'email'=>$this->input->post('email'),
+                'password'=>sha1($this->input->post('password')),
+                'role'=>'menteri'
+            );
+            $user_id=$this->user_model->create($user_data);
+            $menteri_data=array(
+                'user_id'=>$user_id,
+                 'name'=>$this->input->post('name')
+            );
+            $this->menteri_model->create($menteri_data);
+            redirect(site_url('menteri'));
+        }
         
     }
 

@@ -23,14 +23,8 @@ class Menteri_model extends Lele_Model{
     
     public function create($data = array()) {
         $insert_id=parent::create($data);
-        $iid=$this->find_by_user_id($insert_id);
-        $this->load->model('sale_model');
-        $this->sale_model->create(array(
-            'menteri_id'=>$iid,
-            'point'=>0,
-            'month'=>  date('F')
-        ));
-        return $iid;
+       
+        return $insert_id;
     }
    
 }

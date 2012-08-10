@@ -17,7 +17,7 @@ class Album_model extends Lele_Model {
         $this->table_name = 'album';
     }
 
-    public function paginate($limit = 10, $offset = 0) {
+    public function paginate($limit = 4, $offset = 0) {
         $data = array();
 
         $this->db->select('album.*, COUNT(image.id) as total_images')
@@ -25,7 +25,7 @@ class Album_model extends Lele_Model {
                 ->join('image', 'image.album_id = album.id', 'left')
                 ->group_by('album.id')
                 ->limit($limit, $offset)
-                ->order_by('create_date', 'desc');
+                ->order_by('create_date', 'asc');
         $q = $this->db->get();
 
         if ($q->num_rows() > 0) {
@@ -35,5 +35,11 @@ class Album_model extends Lele_Model {
         }
         return $data;
     }
+    
+    public function find_by_title($title='app_default'){
+        return $this->query(array('title'=>$title));
+    }
+    
+    
 
 }
