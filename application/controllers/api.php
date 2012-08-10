@@ -82,6 +82,15 @@ class Api extends Lele_Controller {
         }
     }
     
+    public function get_images_json($album_id){
+        $album=$this->album_model->find_by_id($album_id);
+        $images=$this->image_model->find_by_album_id($album_id);
+        $json_data=array('images'=>$images,'album'=>$album);
+        echo json_decode($json_data);
+    }
+    
+    
+    
      protected function _resize($image_id) {
         $image = $this->image_model->find_by_id($image_id);
         if (isset($image)) {
